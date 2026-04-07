@@ -1,0 +1,32 @@
+executive
+Bob
+123 Elm St.
+555-0469
+123-45-6789
+2423.07
+executive
+Dr. Alice
+456 Oak Dr.
+555-0101
+987-65-4321
+1246.15
+executive
+Juan
+789 Pine Ave.
+555-0000
+010-20-3040
+1169.23
+hourly
+Susan
+678 Fifth Ave.
+555-0690
+958-47-3625
+10.55
+volunteer
+Bill
+987 Mountain Blvd
+555-8374
+volunteer
+Carla
+321 Lake Lane
+555-7282
