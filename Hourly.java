@@ -18,7 +18,7 @@ public class Hourly extends Employee{
     private double hoursWorked;
 
 
-    public Employee(String nameVal, String addressVal, String phoneNumberVal, String ssnVal, double payRateVal, double hoursWorkedVal){
+    public Hourly(String nameVal, String addressVal, String phoneNumberVal, String ssnVal, double payRateVal, double hoursWorkedVal){
 
         super(nameVal, addressVal, phoneNumberVal, ssnVal, payRateVal);
         this.hoursWorked = hoursWorkedVal;
@@ -42,21 +42,21 @@ public class Hourly extends Employee{
     }
 
 
-    @Override
-    public String toString(){
+    // @Override
+    // public String toString(){
 
-        /*
+    //     /*
         
-        instance data in this class that looks like this:
-        Name: Bob
-        Address: 123 Some Lane
-        Phone: 513-555-1212
-        Social Security Number: 100-11-1234
-        Current Hours: 10.5
+    //     instance data in this class that looks like this:
+    //     Name: Bob
+    //     Address: 123 Some Lane
+    //     Phone: 513-555-1212
+    //     Social Security Number: 100-11-1234
+    //     Current Hours: 10.5
         
-        */
+    //     */
 
-    }
+    // }
 
 
 }

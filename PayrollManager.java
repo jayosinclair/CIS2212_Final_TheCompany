@@ -35,17 +35,17 @@ public class PayrollManager {
 
         boolean fileFound = false;
         Scanner keyboardScnr = new Scanner(System.in);
-
+        Scanner fScan;
 
         //Open file, handle exception
 
 
-        while (!fileFound){
+        do { //Execute at least once
             
             try {
                 
                 FileInputStream fileStream = new FileInputStream(fileName);
-                Scanner fScan = new Scanner(fileStream);
+                fScan = new Scanner(fileStream);
 
                 System.out.println("Loading data...");
                 fileFound = true;
@@ -60,37 +60,40 @@ public class PayrollManager {
             }
 
 
-        }
+        } while (!fileFound);
 
 
-        //This entire implementation is flawed (need to create new objects to insert into arraylist), but to get started...
-        while (fScan.nextLine()){
-
+        while(fScan.hasNextLine()){
+        
             if (fScan.nextLine().equals("Volunteer")){
 
-                staffList.add(Volunteer(fScan.nextLine(), fScan.nextLine(), fScan.nextLine()));
-                
+                staffList.add(new Volunteer(fScan.nextLine(), fScan.nextLine(), fScan.nextLine()));
+
             }
 
-            else if (fScan.nextLine().equals("Hourly")){
-
-                staffList.add(Hourly(fScan.nextLine(), fScan.nextLine(), fScan.nextLine(), fScan.nextDouble()));
-                
-            }
-
-            //else if (fScan.nextLine().equals("Executive")){
-
-            else{
-
-                staffList.add(Hourly(fScan.nextLine(), fScan.nextLine(), fScan.nextLine(), fScan.nextLine(), fScan.nextDouble()));
-                
-            }
-
+            // if (fScan.nextLine().equals("Hourly")){
+            //     staffList.add(new Hourly(fScan.nextLine(), fScan.nextLine(), fScan.nextLine(), fScan.nextLine(), fScan.nextDouble(), fScan.nextDouble()));
+            // }
+            
+            // if (fScan.nextLine().equals("Executive")){
+            //     staffList.add(new Executive(fScan.nextLine(), fScan.nextLine(), fScan.nextLine(), fScan.nextLine(), fScan.nextDouble()));
+            // }
 
         }
 
-        //Read file
         //Close file
+
+        if (fileFound){
+            fScan.close();
+        }
+
+        keyboardScnr.close();
+
+        return true;
+
+    }
+
+    public void runPayroll(){
 
 
     }

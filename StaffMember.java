@@ -30,24 +30,24 @@ public abstract class StaffMember {
     public abstract double pay();
 
 
-    @Override
-    public String toString(){
+    // @Override
+    // public String toString(){
 
-        String value;
+    //     String value;
 
-        /*
+    //     /*
         
-        toString - returns a string object built from the instance data that looks like
-        this:
-        Name: Bob
-        Address: 123 Some Lane
-        Phone: 513-555-1212
+    //     toString - returns a string object built from the instance data that looks like
+    //     this:
+    //     Name: Bob
+    //     Address: 123 Some Lane
+    //     Phone: 513-555-1212
         
-        */
+    //     */
 
-        return value;
+    //     return value;
 
-    }
+    // }
 
 
 }
