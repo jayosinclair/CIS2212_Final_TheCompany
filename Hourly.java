@@ -18,10 +18,10 @@ public class Hourly extends Employee{
     private double hoursWorked;
 
 
-    public Hourly(String nameVal, String addressVal, String phoneNumberVal, String ssnVal, double payRateVal, double hoursWorkedVal){
+    public Hourly(String nameVal, String addressVal, String phoneNumberVal, String ssnVal, double payRateVal){
 
         super(nameVal, addressVal, phoneNumberVal, ssnVal, payRateVal);
-        this.hoursWorked = hoursWorkedVal;
+        hoursWorked = 0;
 
     }
 
@@ -33,12 +33,14 @@ public class Hourly extends Employee{
 
     }
 
-
+    @Override
     public double pay(){
 
-        //TODO: Return to this to make sure it works/makes sense.
-        return (super.getPayRate() * hoursWorked);
+        double payAmt = (super.getPayRate() * hoursWorked);
+        this.hoursWorked = 0;
 
+        return payAmt;
+        
     }
 
 

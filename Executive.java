@@ -34,12 +34,15 @@ public class Executive extends Employee{
     }
 
 
-    // public double pay(){
+    @Override
+    public double pay(){
 
-    //     //TODO: Override the inherited method and return the pay from the base class
-    //     //plus the bonus for this Employee. The bonus should be set back to zero.
+        double payAmt = super.getPayRate() + this.bonus;
+        this.bonus = 0;
 
-    // }
+        return payAmt;
+
+    }
 
 
 }

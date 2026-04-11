@@ -33,10 +33,10 @@ public class Employee extends StaffMember{
 
     }
 
+    @Override
     public double pay(){
 
-         //TODO: I don't yet understand why this is different from getPayRate. Need to explore/keep reading spec.
-        return getPayRate();
+        return this.getPayRate();
 
     }
 
