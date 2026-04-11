@@ -35,7 +35,7 @@ public class PayrollManager {
     public boolean loadData(){
 
         boolean fileFound = false;
-        Scanner keyboardScnr = new Scanner(System.in);
+        Scanner keyboardScnr = new Scanner(System.in); //TODO: Convert this to try with resources so it just closes the scanner when done.
         Scanner fScan;
         int counter = 0;
 
@@ -101,9 +101,11 @@ public class PayrollManager {
                     staffList.add(new Hourly(tempName, tempAddress, tempPhoneNumber, tempSSN, tempPayRt));
 
                     System.out.println("Enter the number of hours for " + tempName + ": ");
-                    tempNumHours = getIntResponse(keyboardScnr);
+                    tempNumHours = getDoubleResponse(keyboardScnr);
 
-                    //TODO: Send to addHours method.
+                    //TODO: Send to addHours method. Go read the inheritance/polymorphism content again b/c the commented line below doesn't work:
+
+                    //staffList.get(counter).addHours(tempNumHours);
 
                     break;
 
@@ -119,9 +121,10 @@ public class PayrollManager {
                     staffList.add(new Executive(tempName, tempAddress, tempPhoneNumber, tempSSN, tempPayRt));
 
                     System.out.println("Enter the bonus for " + tempName + ": ");
-                    tempBonus = getIntResponse(keyboardScnr);
+                    tempBonus = getDoubleResponse(keyboardScnr);
 
-                    //TODO: Send bonus to awardBonus method
+                    //TODO: Send bonus to awardBonus method. Go read the inheritance/polymorphism content again b/c the commented line below doesn't work:
+                    //staffList.get(counter).awardBonus(tempBonus);
 
                     break;
 
@@ -170,29 +173,29 @@ public class PayrollManager {
 
 
     /**
-	 * Method getIntResponse is a helper method that seeks integer input > 0 and validates it is, in fact, an integer > 0. Input is
-	 * sought until an integer > 0 is successfully retrieved. NOTE: I Wrote this same method for assignment 5 and reused it here.
+	 * Method getDOubleResponse is a helper method that seeks/validates double input > 0.0. 
+     * NOTE: I Wrote this same method for assignment 5 and reused it here, except I changed int to double.
 	 * @param input is a Scanner object that can be used to get input from the keyboard, a file, etc. 
 	 * It is only used as keyboard input in this program, but reuse is simple.
-	 * @return response value is validated, integer > 0 output
+	 * @return response value is validated, double > 0.0 output
 	 */
-	private static int getIntResponse(Scanner input){
+	private static double getDoubleResponse(Scanner input){
 
-		int response = -1; //Cannot have a negative number of passphrases, word size, etc., so using this as sentinel
+		double response = -1.0; //Cannot have a negative number of passphrases, word size, etc., so using this as sentinel
 
 		while (response < 0){
 
 			try{
-				response = input.nextInt();
+				response = input.nextDouble();
 
-				if (response < 0){
-					System.out.print("Make sure you enter a integer greater than 0. Try again: ");
+				if (response < 0.0){
+					System.out.print("Make sure you enter a vale greater than 0.0. Try again: ");
 				}
 
 			}
 
 			catch(InputMismatchException e){
-				System.out.print("Make sure you enter a integer greater than 0. Try again: ");
+				System.out.print("Make sure you enter a double greater than 0.0. Try again: ");
 				input.next(); //Clear the buffer
 			}
 
