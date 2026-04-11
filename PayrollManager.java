@@ -82,76 +82,52 @@ public class PayrollManager {
 
                 case "volunteer":
 
-                    
+                    tempName = fScan.nextLine();
+                    tempAddress = fScan.nextLine();
+                    tempPhoneNumber = fScan.nextLine();
 
-                break;
+                    staffList.add(new Volunteer(tempName, tempAddress, tempPhoneNumber));
 
+                    break;
 
+                case "hourly":
 
+                    tempName = fScan.nextLine();
+                    tempAddress = fScan.nextLine();
+                    tempPhoneNumber = fScan.nextLine();
+                    tempSSN = fScan.nextLine();
+                    tempPayRt = fScan.nextDouble();
 
+                    staffList.add(new Hourly(tempName, tempAddress, tempPhoneNumber, tempSSN, tempPayRt));
 
-            }
+                    System.out.println("Enter the number of hours for " + tempName + ": ");
+                    tempNumHours = getIntResponse(keyboardScnr);
 
-        
-            if (tempRecordType.equals("volunteer")){
+                    //TODO: Send to addHours method.
 
-                tempName = fScan.nextLine();
-                tempAddress = fScan.nextLine();
-                tempPhoneNumber = fScan.nextLine();
-
-                staffList.add(new Volunteer(tempName, tempAddress, tempPhoneNumber));
-
-                tempName = ""; //Reset so temp values aren't accidentally reused
-                tempAddress = "";
-                tempPhoneNumber = "";
-
-            }
-
-            if (tempRecordType.equals("hourly")){
-
-                tempName = fScan.nextLine();
-                tempAddress = fScan.nextLine();
-                tempPhoneNumber = fScan.nextLine();
-                tempSSN = fScan.nextLine();
-                tempPayRt = fScan.nextDouble();
-
-                staffList.add(new Hourly(tempName, tempAddress, tempPhoneNumber, tempSSN, tempPayRt));
-
-                System.out.println("Enter the number of hours for " + tempName + ": ");
-                tempNumHours = getIntResponse(keyboardScnr);
+                    break;
 
 
-                // tempName = ""; //Null string variables so they aren't interpreted incorrectly elsewhere.
-                // tempAddress = "";
-                // tempPhoneNumber = "";
-                // tempSSN = "";
-                // tempPayRt = "";
-                // tempNumHours = "";
+                case "executive":
 
-                
+                    tempName = fScan.nextLine();
+                    tempAddress = fScan.nextLine();
+                    tempPhoneNumber = fScan.nextLine();
+                    tempSSN = fScan.nextLine();
+                    tempPayRt = fScan.nextDouble();
 
-            }
-            
-            if (tempRecordType.equals("executive")){
-                
-                tempName = fScan.nextLine();
-                tempAddress = fScan.nextLine();
-                tempPhoneNumber = fScan.nextLine();
-                tempSSN = fScan.nextLine();
-                tempPayRt = fScan.nextDouble();
+                    staffList.add(new Executive(tempName, tempAddress, tempPhoneNumber, tempSSN, tempPayRt));
 
-                staffList.add(new Executive(tempName, tempAddress, tempPhoneNumber, tempSSN, tempPayRt));
+                    System.out.println("Enter the bonus for " + tempName + ": ");
+                    tempBonus = getIntResponse(keyboardScnr);
 
-                System.out.println("Enter the bonus for " + tempName + ": ");
-                tempBonus = getIntResponse(keyboardScnr);
+                    //TODO: Send bonus to awardBonus method
 
+                    break;
 
-                // tempName = ""; //Null string variables so they aren't interpreted incorrectly elsewhere.
-                // tempAddress = "";
-                // tempPhoneNumber = "";
-                // tempSSN = "";
-                // tempPayRt = "";
-                // tempBonus = "";
+                default:
+
+                    break;
 
             }
 
@@ -174,7 +150,21 @@ public class PayrollManager {
 
     public void runPayroll(){
 
-        System.out.println("Hello!");
+        for (StaffMember entry: staffList){
+
+            System.out.println("-------------------");
+
+            System.out.print(entry.toString() + "\n");
+
+            if (entry.pay() == 0){
+                System.out.println("Thanks!");
+            }
+
+            else {
+                System.out.println("Paid: $" + entry.pay());
+            }
+
+        }
 
     }
 

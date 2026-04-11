@@ -46,7 +46,7 @@ public class Employee extends StaffMember{
     public String toString(){
 
         String baseline = super.toString();
-        String instant = "Social Security Number: " + this.ssn;
+        String instant = "Social Security Number: " + this.ssn + "\n";
 
         return baseline + instant;
 

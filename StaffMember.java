@@ -38,7 +38,7 @@ public abstract class StaffMember {
 
         "Name: " + this.name + "\n" +
         "Address: " + this.address + "\n" +
-        "Phone: " + this.phoneNumber;
+        "Phone: " + this.phoneNumber + "\n";
 
         return baseline;
 

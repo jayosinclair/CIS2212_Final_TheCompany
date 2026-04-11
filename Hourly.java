@@ -48,7 +48,7 @@ public class Hourly extends Employee{
     public String toString(){
 
         String baseline = super.toString();
-        String instant = "Current Hours: " + this.hoursWorked;
+        String instant = "Current Hours: " + this.hoursWorked + "\n";
 
         return baseline + instant;
 
