@@ -30,24 +30,19 @@ public abstract class StaffMember {
     public abstract double pay();
 
 
-    // @Override
-    // public String toString(){
+    @Override
+    public String toString(){
 
-    //     String value;
+        String baseline = //Is this variable declaration unnecessary? I think so... but I tried to make this readable.
+        //This baseline text is built upon by other classes.
 
-    //     /*
-        
-    //     toString - returns a string object built from the instance data that looks like
-    //     this:
-    //     Name: Bob
-    //     Address: 123 Some Lane
-    //     Phone: 513-555-1212
-        
-    //     */
+        "Name: " + this.name + "\n" +
+        "Address: " + this.address + "\n" +
+        "Phone: " + this.phoneNumber;
 
-    //     return value;
+        return baseline;
 
-    // }
+    }
 
 
 }

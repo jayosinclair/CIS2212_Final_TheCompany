@@ -42,20 +42,26 @@ public class Employee extends StaffMember{
 
 
 
-    // @Override
-    // public String toString(){
+    @Override
+    public String toString(){
 
-    //     /*
-        
-    //     instance data in this class that looks like this:
-    //     Name: Bob
-    //     Address: 123 Some Lane
-    //     Phone: 513-555-1212
-    //     Social Security Number: 100-11-1234
-        
-    //     */
+        String baseline = super.toString();
+        String instant = "Social Security Number: " + this.ssn;
 
-    // }
+        return baseline + instant;
+
+
+        /*
+        
+        instance data in this class that looks like this:
+        Name: Bob
+        Address: 123 Some Lane
+        Phone: 513-555-1212
+        Social Security Number: 100-11-1234
+        
+        */
+
+    }
 
 
 

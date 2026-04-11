@@ -29,7 +29,7 @@ public class Executive extends Employee{
 
     public void awardBonus(double bonusAmt){
 
-        bonus += bonusAmt;
+        this.bonus += bonusAmt;
 
     }
 
@@ -38,23 +38,6 @@ public class Executive extends Employee{
 
     //     //TODO: Override the inherited method and return the pay from the base class
     //     //plus the bonus for this Employee. The bonus should be set back to zero.
-
-    // }
-
-
-    // @Override
-    // public String toString(){
-
-    //     /*
-        
-    //     instance data in this class that looks like this:
-    //     Name: Bob
-    //     Address: 123 Some Lane
-    //     Phone: 513-555-1212
-    //     Social Security Number: 100-11-1234
-    //     Current Hours: 10.5
-        
-    //     */
 
     // }
 

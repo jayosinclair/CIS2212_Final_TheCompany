@@ -21,7 +21,7 @@ import java.io.FileNotFoundException;
 public class PayrollManager {
     
     private String fileName;
-    private ArrayList <StaffMember> staffList = new ArrayList <StaffMember>(); //TODO: This may or may not be the right container type. Keep reading spec...
+    private ArrayList <StaffMember> staffList = new ArrayList <StaffMember>();
 
 
     public PayrollManager(String fileNm){
@@ -95,6 +95,7 @@ public class PayrollManager {
 
     public void runPayroll(){
 
+        System.out.println("Hello!");
 
     }
 
