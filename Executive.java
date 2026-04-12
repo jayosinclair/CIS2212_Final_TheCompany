@@ -34,11 +34,11 @@ public class Executive extends Employee{
     }
 
 
+
     @Override
     public double pay(){
 
         double payAmt = super.getPayRate() + this.bonus;
-        this.bonus = 0;
 
         return payAmt;
 

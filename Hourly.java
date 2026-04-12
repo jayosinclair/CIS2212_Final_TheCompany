@@ -21,23 +21,21 @@ public class Hourly extends Employee{
     public Hourly(String nameVal, String addressVal, String phoneNumberVal, String ssnVal, double payRateVal){
 
         super(nameVal, addressVal, phoneNumberVal, ssnVal, payRateVal);
-        hoursWorked = 0;
+        this.hoursWorked = 0;
 
     }
 
 
-
     public void addHours(double numHours){
 
-        hoursWorked += numHours;
+        this.hoursWorked += numHours;
 
     }
 
     @Override
     public double pay(){
 
-        double payAmt = (super.getPayRate() * hoursWorked);
-        this.hoursWorked = 0;
+        double payAmt = (super.getPayRate() * this.hoursWorked);
 
         return payAmt;
         
