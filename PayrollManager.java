@@ -12,7 +12,6 @@ This program is intended to demonstrate mastery of CIS 2212 course concepts as t
 
 //**********************************************************************************************************************
 
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -22,9 +21,13 @@ import java.util.Scanner;
 public class PayrollManager {
     
     private String fileName;
-    private ArrayList <StaffMember> staffList = new ArrayList <StaffMember>();
+    private ArrayList <StaffMember> staffList = new ArrayList <StaffMember>(); //Note that I did not use diamond notation just for backwards compatibility.
 
 
+    /**
+     * The PayrollManager constructor receives a file name and assigns it to an instance variable.
+     * @param fileNm The file name. Must be in the same location as the rest of the package.
+     */
     public PayrollManager(String fileNm){
 
         this.fileName = fileNm;
@@ -33,13 +36,18 @@ public class PayrollManager {
     }
 
 
+    /**
+     * The loadData method reads a file and maps contents to objects and associated attributes within an ArrayList called staffList.
+     * @return true if execution is successful
+     */
     public boolean loadData(){
 
-        boolean fileFound = false;
+        boolean fileFound = false; //Variable for the while loop
         Scanner keyboardScnr = new Scanner(System.in); //TODO: Convert this to try with resources so it just closes the scanner when done.
-        Scanner fScan;
-        int counter = 0;
-
+        Scanner fScan; //Scanner to read the file. This is not the same instance as the keyboardScnr, which is to read from the console.
+        
+        //The following temp values are used just to make it clear what values are read into before they 
+        //are fed to constructors in building files:
         String tempRecordType;
         String tempName;
         String tempAddress;
@@ -48,9 +56,9 @@ public class PayrollManager {
         double tempNumHours;
         double tempPayRt;
         double tempBonus;
+
         Hourly tempHourly; //Made to build and modify an Hourly object before adding it to an ArrayList.
         Executive tempExecutive; //Made to build and modify an Executive object before adding it to an ArrayList.
-
 
 
         //Open file, handle exception
@@ -77,6 +85,7 @@ public class PayrollManager {
         } while (!fileFound);
 
 
+        //Read the file until the end of the file
         while(fScan.hasNextLine()){
 
             tempRecordType = fScan.nextLine();
@@ -101,8 +110,10 @@ public class PayrollManager {
                     tempSSN = fScan.nextLine();
                     tempPayRt = fScan.nextDouble();
                     
-                   
-                    //staffList.add(new Hourly(tempName, tempAddress, tempPhoneNumber, tempSSN, tempPayRt));
+                    //I originally had a single statement to add the new Hourly object in one line, but I
+                    //ultimately decided to split things up so I could use addHours without making a counter variable
+                    //with a get() method to traverse the ArrayList since tempNumHours is a parameter with the constructor.
+                    //Either way should work, but this walks through it a bit more pedantically. Note I did the same thing with Executive.
 
                     System.out.print("Enter the number of hours for " + tempName + ": ");
                     tempNumHours = getDoubleResponse(keyboardScnr);
@@ -115,8 +126,6 @@ public class PayrollManager {
                     //tempHourly = null;
                     tempNumHours = 0; //Reset
 
-                    //staffList.get(counter).addHours(tempNumHours);
-
                     break;
 
 
@@ -128,7 +137,6 @@ public class PayrollManager {
                     tempSSN = fScan.nextLine();
                     tempPayRt = fScan.nextDouble();
 
-                    //staffList.add(new Executive(tempName, tempAddress, tempPhoneNumber, tempSSN, tempPayRt));
 
                     System.out.print("Enter the bonus for " + tempName + ": ");
                     tempBonus = getDoubleResponse(keyboardScnr);
@@ -138,20 +146,7 @@ public class PayrollManager {
 
                     staffList.add(tempExecutive);
                     //tempExecutive = null;
-                    tempBonus = 0; //Reset
-
-
-                    /*
-                    From 10.7.1 of the ZyBooks text:
-
-                    Note that a method operating on a collection of Object elements may only invoke the methods defined by the base class (e.g., the Object class). 
-                    Thus, a statement that calls the toString() method on an element of an ArrayList of Objects called objList, such as objList.get(i).toString(), 
-                    is valid because the Object class defines the toString() method. However, a statement that calls, for example, the Integer class's intValue() 
-                    method on the same element (i.e., objList.get(i).intValue()) results in a compiler error even if that particular element is an Integer object.
-
-                    */
-
-
+                    tempBonus = 0.0; //Reset
 
                     break;
 
@@ -161,8 +156,7 @@ public class PayrollManager {
 
             }
 
-            tempRecordType = "";
-            counter++;
+            tempRecordType = ""; //Reset
 
         }
 
@@ -178,28 +172,12 @@ public class PayrollManager {
 
     }
 
-    // public void runPayroll(){
 
-    //     for (StaffMember entry: staffList){
-
-    //         System.out.println("-------------------");
-
-    //         System.out.print(entry.toString() + "\n");
-
-    //         if (entry.pay() == 0){
-    //             System.out.println("Thanks!");
-    //         }
-
-    //         else {
-    //             System.out.println("Paid: $" + entry.pay()); //TODO: Need to format to two decimal places.
-    //         }
-
-    //     }
-
-    // }
-
-
-        public void runPayroll(){
+    /**
+     * The runPayroll method traverses the ArrayList and provides console output with polymorphic toString methods and a pay amount.
+     * The for loop in this implementation is not an enhanced for loop, but an example of one can be found in a previous commit on GitHub.
+     */
+    public void runPayroll(){
 
         for (int i = 0; i < staffList.size(); i++){
 
@@ -224,7 +202,7 @@ public class PayrollManager {
 
 
     /**
-	 * Method getDOubleResponse is a helper method that seeks/validates double input > 0.0. 
+	 * Method getDoubleResponse is a helper method that seeks/validates double input > 0.0. 
      * NOTE: I Wrote this same method for assignment 5 and reused it here, except I changed int to double.
 	 * @param input is a Scanner object that can be used to get input from the keyboard, a file, etc. 
 	 * It is only used as keyboard input in this program, but reuse is simple.
@@ -237,6 +215,7 @@ public class PayrollManager {
 		while (response < 0){
 
 			try{
+
 				response = input.nextDouble();
 
 				if (response < 0.0){
@@ -246,8 +225,10 @@ public class PayrollManager {
 			}
 
 			catch(InputMismatchException e){
+                
 				System.out.print("Make sure you enter a double greater than 0. Try again: ");
 				input.next(); //Clear the buffer
+                
 			}
 
 		}

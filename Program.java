@@ -13,6 +13,9 @@ This program is intended to demonstrate mastery of CIS 2212 course concepts as t
 //**********************************************************************************************************************
 
 
+/**
+ * The Program class is the container for the main method.
+ */
 public class Program
     {
         public static void main(String[] args)
