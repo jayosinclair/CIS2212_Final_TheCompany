@@ -2,7 +2,7 @@
 //Section: CIS 2212-801
 //Assignment: Final Assignment: The Company
 //Due Date: May 5, 2026
-//Submitted: 
+//Submitted: April 13, 2026
 
 /*
 This program is intended to demonstrate mastery of CIS 2212 course concepts as the final project.
@@ -43,7 +43,7 @@ public class PayrollManager {
     public boolean loadData(){
 
         boolean fileFound = false; //Variable for the while loop
-        Scanner keyboardScnr = new Scanner(System.in); //TODO: Convert this to try with resources so it just closes the scanner when done.
+        Scanner keyboardScnr = new Scanner(System.in);
         Scanner fScan; //Scanner to read the file. This is not the same instance as the keyboardScnr, which is to read from the console.
         
         //The following temp values are used just to make it clear what values are read into before they 
@@ -124,7 +124,7 @@ public class PayrollManager {
                     staffList.add(tempHourly);
 
                     //tempHourly = null;
-                    tempNumHours = 0; //Reset
+                    tempNumHours = 0.0; //Reset
 
                     break;
 
@@ -212,7 +212,7 @@ public class PayrollManager {
 
 		double response = -1.0; //Cannot have a negative number of passphrases, word size, etc., so using this as sentinel
 
-		while (response < 0){
+		while (response < 0.0){
 
 			try{
 
